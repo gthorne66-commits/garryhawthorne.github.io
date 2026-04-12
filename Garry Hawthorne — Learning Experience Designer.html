@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)file:///C:/Users/gthor/Downloads/portfolio_5.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garry Hawthorne — Learning Experience Designer</title>
+<link href="./Garry Hawthorne — Learning Experience Designer_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2145;
+    --navy-mid: #1a3a6b;
+    --navy-light: #2a5298;
+    --gold: #c8a84b;
+    --gold-light: #e6c96d;
+    --gold-pale: #f7eecc;
+    --accent: #4a90c4;
+    --white: #ffffff;
+    --off-white: #f8f6f0;
+    --text: #1a1a2e;
+    --muted: #5a6a85;
+    --border: rgba(200,168,75,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,33,69,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 6px 16px;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 2rem 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(42,82,152,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(200,168,75,0.08) 0%, transparent 50%);
+  }
+  .hero-grid {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300; line-height: 1.7;
+    color: rgba(255,255,255,0.68);
+    margin-bottom: 2rem;
+    max-width: 420px;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: none; padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 400;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* hero stats */
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,168,75,0.2);
+    border-radius: 4px;
+    padding: 1.2rem 1.4rem;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 0.75rem; font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--white);
+    padding: 80px 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; color: var(--navy);
+    margin-bottom: 1.4rem;
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;
+    margin-top: 2rem;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.8; color: #3a4a60;
+    margin-bottom: 1rem;
+  }
+  .tools-grid {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 1rem;
+  }
+  .tool-chip {
+    background: var(--off-white);
+    border: 1px solid rgba(13,33,69,0.12);
+    color: var(--navy-mid);
+    font-size: 0.78rem; font-weight: 400;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+  .tool-chip.ai {
+    background: var(--gold-pale);
+    border-color: rgba(200,168,75,0.4);
+    color: #7a5a10;
+  }
+
+  /* WORK */
+  .work {
+    background: var(--off-white);
+    padding: 80px 2rem;
+  }
+  .work-header {
+    margin-bottom: 2.5rem;
+  }
+  .work-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(13,33,69,0.12);
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold);
+  }
+  .card-img {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top;
+    display: block;
+    background: var(--navy);
+  }
+  .card-img-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .card-img-placeholder::after {
+    content: attr(data-label);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 500; font-style: italic;
+    color: var(--gold);
+    opacity: 0.8;
+    text-align: center;
+    padding: 1rem;
+  }
+  .card-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+  }
+  .card-meta {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 0.8rem;
+  }
+  .tag {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 2px;
+  }
+  .tag-role { background: rgba(13,33,69,0.08); color: var(--navy-mid); }
+  .tag-tool { background: var(--gold-pale); color: #7a5a10; }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .card-context {
+    font-size: 0.82rem; color: var(--muted); margin-bottom: 0.7rem;
+    font-style: italic;
+  }
+  .card-desc {
+    font-size: 0.88rem; line-height: 1.6; color: #3a4a60;
+    margin-bottom: 0.9rem;
+  }
+  .card-outcome {
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--navy-light);
+    padding: 8px 10px;
+    background: rgba(13,33,69,0.04);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* SKILLS BAR */
+  .skills-section {
+    background: var(--navy);
+    padding: 60px 2rem;
+  }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    margin-top: 2rem;
+  }
+  .skill-group h4 {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(200,168,75,0.2);
+  }
+  .skill-group ul { list-style: none; }
+  .skill-group li {
+    font-size: 0.88rem; color: rgba(255,255,255,0.65);
+    padding: 4px 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-group li::before {
+    content: ''; display: block;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold); opacity: 0.6; flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--white);
+    padding: 80px 2rem;
+    text-align: center;
+  }
+  .contact p {
+    font-size: 1rem; color: var(--muted); margin: 1rem 0 2rem;
+    max-width: 500px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+  }
+  .contact-links {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 24px 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(200,168,75,0.15);
+  }
+  footer p {
+    font-size: 0.78rem; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+  }
+  footer span { color: var(--gold); }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#" class="nav-logo">Garry Hawthorne</a>
+  <ul class="nav-links">
+    <li><a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#about">About</a></li>
+    <li><a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#work">Work</a></li>
+    <li><a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#skills">Skills</a></li>
+    <li><a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Learning Experience Designer</p>
+      <h1>Training that <em>sticks</em>, systems that scale.</h1>
+      <p class="hero-sub">Two decades building curriculum that changes behavior across automotive, healthcare, real estate, and technology. Now specializing in AI-integrated learning design for enterprise environments.</p>
+      <div class="hero-actions">
+        <a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#work" class="btn-primary">See My Work</a>
+        <a href="file:///C:/Users/gthor/Downloads/portfolio_5.html#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card fade-in">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years in L&amp;D</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Tool Fluency</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Curiosity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <p class="section-tag">About</p>
+    <h2 class="section-title">Instructional design meets real-world complexity.</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a training and instructional design specialist with a background that spans automotive dealership operations, healthcare, real estate, and customer service — bringing a rare ability to translate complex, high-stakes workflows into learning experiences that actually move people forward.</p>
+        <p>Currently serving as Software Training Specialist at Atlantic Coast Automotive Group, where I own DMS (Saturn) curriculum development from discovery through deployment. I design for how adults actually learn: context-first, outcome-driven, visually clear.</p>
+        <p>I bring AI tools into every stage of the design process — from rapid content prototyping with Claude and NotebookLM, to building synthetic practice environments with Synthesia — without losing the human judgment that makes training land.</p>
+      </div>
+      <div class="fade-in">
+        <p style="font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Tools &amp; Platforms</p>
+        <div class="tools-grid">
+          <span class="tool-chip ai">Claude AI</span>
+          <span class="tool-chip ai">NotebookLM</span>
+          <span class="tool-chip ai">Synthesia</span>
+          <span class="tool-chip ai">Microsoft Copilot</span>
+          <span class="tool-chip ai">Perplexity AI</span>
+          <span class="tool-chip">Articulate 360</span>
+          <span class="tool-chip">SCORM / xAPI</span>
+          <span class="tool-chip">LMS Administration</span>
+          <span class="tool-chip">Canva</span>
+          <span class="tool-chip">Lucidchart</span>
+          <span class="tool-chip">Microsoft 365</span>
+          <span class="tool-chip">Zoom / Teams</span>
+        </div>
+        <p style="font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;margin-top:1.6rem;">Frameworks</p>
+        <div class="tools-grid">
+          <span class="tool-chip">ADDIE</span>
+          <span class="tool-chip">SAM</span>
+          <span class="tool-chip">Kirkpatrick Model</span>
+          <span class="tool-chip">Bloom's Taxonomy</span>
+          <span class="tool-chip">Virtual Facilitation</span>
+          <span class="tool-chip">Needs Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="section-inner">
+    <div class="work-header">
+      <p class="section-tag">Selected Work</p>
+      <h2 class="section-title">Curriculum that runs in the real world.</h2>
+    </div>
+    <div class="work-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card fade-in">
+        <img class="card-img" src="file:///C:/Users/gthor/Downloads/Updated_Saturn_Deal_Roadmap_Infographic.png" alt="Saturn DMS Deal Roadmap Infographic" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;" style="display: none;">
+        <div class="card-img-placeholder" data-label="Saturn DMS — Deal Roadmap" style="display: flex;"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="tag tag-role">Instructional Designer</span>
+            <span class="tag tag-tool">NotebookLM</span>
+            <span class="tag tag-tool">Canva</span>
+          </div>
+          <h3 class="card-title">Saturn DMS Deal Roadmap</h3>
+          <p class="card-context">Atlantic Coast Automotive Group — DMS Onboarding Program</p>
+          <p class="card-desc">A visual overview of the 12-phase vehicle sales workflow, from lead to ledger. Designed to give dealership staff a mental model of the full deal lifecycle before drilling into individual modules.</p>
+          <div class="card-outcome">Outcome: Reduced new-hire ramp time by anchoring system navigation to a familiar end-to-end process flow.</div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card fade-in">
+        <img class="card-img" src="file:///C:/Users/gthor/Downloads/Saturn_Infographic_-_F_I_Admin_3.png" alt="F&amp;I Admin User Flow Infographic" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;" style="display: none;">
+        <div class="card-img-placeholder" data-label="F&amp;I Admin — 7-Step User Flow" style="display: flex;"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="tag tag-role">Instructional Designer</span>
+            <span class="tag tag-tool">Canva</span>
+          </div>
+          <h3 class="card-title">F&amp;I Admin Folder — 7-Step User Flow</h3>
+          <p class="card-context">Atlantic Coast Automotive Group — Finance &amp; Insurance Module</p>
+          <p class="card-desc">A step-by-step visual guide walking F&amp;I Administrators through the document upload, verification, and deal jacket submission process inside Saturn DMS. Designed for reference during live system use.</p>
+          <div class="card-outcome">Outcome: Reduced documentation errors at deal close by making the correct workflow visible at a glance.</div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card fade-in">
+        <div class="card-img-placeholder" data-label="Purchase Figures — Module 08"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="tag tag-role">Curriculum Developer</span>
+            <span class="tag tag-tool">Claude AI</span>
+            <span class="tag tag-tool">Microsoft Word</span>
+          </div>
+          <h3 class="card-title">Saturn DMS — Purchase Figures Instruction Manual</h3>
+          <p class="card-context">Atlantic Coast Automotive Group — Module 08 of 12</p>
+          <p class="card-desc">A comprehensive reference guide covering deal type selection (Cash, Finance, Lease), system auto-population logic, lender selection, credit application workflows, and rehashing procedures — written for Sales Managers.</p>
+          <div class="card-outcome">Outcome: Standardized figure entry across a multi-location dealership group, reducing deal corrections and lender submission errors.</div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card fade-in">
+        <div class="card-img-placeholder" data-label="F&amp;I Menu — Module 09"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="tag tag-role">Curriculum Developer</span>
+            <span class="tag tag-tool">Claude AI</span>
+            <span class="tag tag-tool">Microsoft Word</span>
+          </div>
+          <h3 class="card-title">Saturn DMS — F&amp;I Menu User Reference Guide</h3>
+          <p class="card-context">Atlantic Coast Automotive Group — Module 09 of 12 | Audience: F&amp;I Managers</p>
+          <p class="card-desc">A structured guide covering the four protection packages, mandatory video presentation workflow, step-by-step menu process, and best practices for transparent customer-facing delivery of F&amp;I products.</p>
+          <div class="card-outcome">Outcome: Enabled consistent, compliant F&amp;I presentations across all finance managers — reducing customer objections and improving protection product uptake.</div>
+        </div>
+      </div>
+
+      <!-- Project 5 — GT Presentation teaser -->
+      <div class="project-card fade-in">
+        <div class="card-img-placeholder" data-label="AI in Legal Learning — Strategy Presentation"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="tag tag-role">L&amp;D Strategist</span>
+            <span class="tag tag-tool">Claude AI</span>
+            <span class="tag tag-tool">PowerPoint</span>
+          </div>
+          <h3 class="card-title">AI in Legal Education — Executive Strategy Deck</h3>
+          <p class="card-context">Interview Presentation — Technology &amp; AI Learning Specialist</p>
+          <p class="card-desc">A 5-minute stakeholder presentation outlining how AI tools can be integrated into legal professional development programs — covering use cases, adoption barriers, ethical guardrails, and a phased implementation roadmap.</p>
+          <div class="card-outcome">Designed for a C-suite and senior HR audience at an AmLaw 50 firm. Advanced to final-round interview.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-inner">
+    <p class="section-tag" style="color:var(--gold)">Expertise</p>
+    <h2 class="section-title" style="color:var(--white)">What I bring to every engagement.</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-group">
+        <h4>Instructional Design</h4>
+        <ul>
+          <li>Needs analysis &amp; gap assessment</li>
+          <li>ADDIE &amp; SAM methodologies</li>
+          <li>Storyboarding &amp; rapid prototyping</li>
+          <li>Blended &amp; eLearning design</li>
+          <li>Assessment &amp; evaluation strategy</li>
+          <li>Kirkpatrick Level 1–3 measurement</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Facilitation &amp; Delivery</h4>
+        <ul>
+          <li>Virtual facilitation (Zoom, Teams)</li>
+          <li>Live ILT and VILT programs</li>
+          <li>Technical software training</li>
+          <li>DMS / ERP systems training</li>
+          <li>Train-the-trainer development</li>
+          <li>Adult learning principles</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>AI &amp; Technology</h4>
+        <ul>
+          <li>Claude AI — content development</li>
+          <li>Synthesia — AI video production</li>
+          <li>NotebookLM — knowledge synthesis</li>
+          <li>Microsoft Copilot — workflow AI</li>
+          <li>LMS administration &amp; SCORM</li>
+          <li>Technical writing &amp; documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="section-tag">Contact</p>
+    <h2 class="section-title">Let's build something that works.</h2>
+    <p>Available for full-time, remote, and hybrid opportunities in instructional design, L&amp;D strategy, and AI-integrated learning programs.</p>
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/garryhawthorne" class="btn-primary" target="_blank">LinkedIn</a>
+      <a href="file:///C:/cdn-cgi/l/email-protection#6a0d0b1818132a0f120b071a060f44090507" class="btn-outline">Email Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Garry Hawthorne</span> — Learning Experience Designer — Miami, FL</p>
+</footer>
+
+<script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.ad</script></body></html>
